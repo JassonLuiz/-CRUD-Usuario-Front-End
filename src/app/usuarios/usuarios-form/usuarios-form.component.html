@@ -1,0 +1,130 @@
+<h1 class="mt-4">Usuários</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{ usuario.id ? 'Edição' : 'Cadastro'}}</li>
+</ol>
+<div class="container">
+    <form #usuarioForm="ngForm" (ngSubmit)="onSubmite()">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+                    Usuario salvo/atualizado com sucesso!
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of erros">
+                    {{ erro }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="usuario.id">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>ID:</label>
+                    <input type="text" class="form-control" 
+                           [ngModel]="usuario.id" name="id" disabled="true"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Data Cadastro:</label>
+                    <input type="text" class="form-control" 
+                           [ngModel]="usuario.dataInclusao" name="dataInclusao" disabled="true"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Data Alteração:</label>
+                    <input type="text" class="form-control" 
+                           [ngModel]="usuario.dataAlteracao" name="dataAlteracao" disabled="true"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Nome:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.nome" name="nome"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Login:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.login" name="login"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Senha:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.senha" name="senha"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>CPF:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.cpf" name="cpf"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Data de Nascimento:</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.dataNascimento" name="dataNascimento"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Nome da Mãe:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.nomeMae" name="nomeMae"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Telefone:</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.telefone" name="telefone"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>E-mail:</label>
+                    <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email"/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Status:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="usuario.status" name="status"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success" *ngIf="!usuario.id">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+
+                <button type="submit" class="btn btn-primary" *ngIf="usuario.id">
+                    <i class="fa fa-sync-alt"></i> Atualizar
+                </button>
+
+                <button type="button" class="btn btn-danger ml-1" (click)="voltaParaLista()">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
